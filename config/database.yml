@@ -1,0 +1,19 @@
+default: &default
+  adapter: mysql2
+  pool: 25
+  timeout: 5000
+
+development:
+  <<: *default
+  database: claims_new_dev
+  username: root
+
+test:
+  <<: *default
+  database: claims_new_test
+  username: root
+
+production:
+  <<: *default
+  database: claims_new_prod
+  username: root
