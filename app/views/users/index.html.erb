@@ -1,0 +1,11 @@
+<div align="right">
+  <%= generate_common_links({index_path: users_path(request.parameters.merge({format: :xls})), create_path: new_user_path, object: @users, create_text: "Add New User" }) %>
+</div>
+<div align="left">
+<%#= generate_search_form({index_path: users_path, placeholder: params[:search] ? params[:search] : "Search Users" }) %>
+</div>
+<fieldset>
+  <legend> Users List</legend>
+  <%= render "users", users: @users, roles: @roles %>
+  <%= will_paginate @users %>
+</fieldset>

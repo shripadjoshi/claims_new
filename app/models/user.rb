@@ -11,6 +11,13 @@ class User < ActiveRecord::Base
 
   before_create :assign_role
 
+  #scope :include_user_roles, include: [:roles]
+
+  scope :include_user_roles, -> {
+    includes("roles")
+  }
+
+  
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -18,6 +25,12 @@ class User < ActiveRecord::Base
     else
       where(conditions.to_hash).first
     end
+  end
+
+  def user_roles
+    #return self.roles.first.name.capitalize
+    #return self.roles.collect(&:name).join(", ")
+    return roles.collect{|role| role.name.capitalize}.join(", ")
   end
   
   def active_for_authentication?

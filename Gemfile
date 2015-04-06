@@ -29,8 +29,12 @@ gem 'therubyracer', platforms: :ruby
 gem "less-rails"
 gem 'twitter-bootstrap-rails'
 gem "rolify"
+gem 'will_paginate', '~> 3.0.6'
+gem 'simple_form'
 group :development do
   gem 'quiet_assets'
+  gem "rails_best_practices"
+  gem 'rack-mini-profiler'
 end
 
 ###Custom gems end here

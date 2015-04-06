@@ -1,0 +1,43 @@
+
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Active</th>
+      <th data-sorter="false">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td width="10%"><%= user.user_name %></td>
+        <td width="30%"><%= user.email %></td>
+        <td width="20%"><%= user.user_roles %></td>
+        <td width="20%">
+          <% if current_user != user %>
+            <p class="switch" id="<%= user.id %>">
+              <label class="cb-enable <%= 'selected' if user.active? %>"><span>Yes</span></label>
+              <label class="cb-disable <%= 'selected' if !user.active? %>"><span>No</span></label>
+            </p>
+          <% else %>
+            Yes
+          <% end %>
+        </td>
+        <td width="20%">
+          <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-min' %>
+            <% if current_user != user %>
+              <a data-toggle="modal" href="#role-options-<%= user.id %>" class="btn" type="button">Change role</a>
+              <%= render user, roles: roles %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5"><%= pluralize(users.size, 'user') %></td>
+      </tr>
+    </tfoot>
+  </table>

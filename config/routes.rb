@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   devise_for :users, path_prefix: 'd'
   resources :users, except: [:show, :destroy] do
-    #put 'status', on: :member
+    put 'status', on: :member
+    put 'roles', on: :member
   end
   root to: 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
