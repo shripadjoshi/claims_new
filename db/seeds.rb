@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+###Create Roles only if role is not present
+
+Role.create([{name: 'admin'}, {name: 'chemist'}, {name: 'editor'}]) if Role.first.blank?

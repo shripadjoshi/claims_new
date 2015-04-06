@@ -28,6 +28,10 @@ gem 'devise'
 gem 'therubyracer', platforms: :ruby
 gem "less-rails"
 gem 'twitter-bootstrap-rails'
+gem "rolify"
+group :development do
+  gem 'quiet_assets'
+end
 
 ###Custom gems end here
 # Use ActiveModel has_secure_password
